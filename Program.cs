@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 using System;
 
-					
+
 public class Program
 {
 	public static void Main()
@@ -17,7 +17,11 @@ public class Program
 }
 
 public class NotificacionHub: Hub{
-	///.. lo que haga mi hub
+	//.. lo que haga mi hub
+    public  Task EventoInvocablePorElUsuario(){
+        var modelo = new { }; //modelo que contiene data
+        return Clients.Caller.SendAsync("Evento", modelo);
+    }
 }
 
 public class Servicio{
